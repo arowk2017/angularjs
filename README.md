@@ -1,2 +1,2 @@
-# lorem_generator
-Lorem Ipsum Generator
+# angularjs
+AngularJS
