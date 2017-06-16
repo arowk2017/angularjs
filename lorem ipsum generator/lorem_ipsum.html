@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+   
+   <head>
+	  <title>Lorem Ipsum Generator</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="./app.js"></script>
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+   </head>
+   
+   <body ng-app="lorem">
+      <div class="container">
+	  <div class="row">
+	  
+		<div class="col-md-4">
+		</div>
+		  <div ng-controller="loremController" class="col-md-4">
+		  <h1>{{lorem.title}}</h1>
+			 
+			 
+			 <form ng:submit="generateLorem()">
+			<label for="lorem_quantity">Quantity: <input id="lorem_quantity" name="lorem_quantity" ng-model = "lorem.quantity"/></label><br />
+			<label for="lorem_type_paragraph">Paragraph: <input type="radio" id="lorem_paragraph" name="Paragraph" value="1" ng-model="lorem.type" ng-checked="true" ng-change="clear_result()"/>&nbsp <label for="lorem_type_sentence">Sentence: <input type="radio" id="lorem_sentence" name="Sentence" value="2" ng-model="lorem.type" ng-change="clear_result()"/></label><br />
+			<label for="lorem_sentence_length">Sentence Length: <select ng-model="lorem.length" ng-options="x for x in lorem.choices" value="{{lorem.choices._id}}">
+			</select></label><br />
+			<label for="lorem_style_military">Military Style: <input type="radio" id="lorem_military" name="Military" value="1" ng-model="lorem.style" ng-checked="true" ng-change="clear_result()"/>&nbsp <label for="lorem_style_greek">Greek Style: <input type="radio" id="lorem_greek" name="Greek" value="2" ng-model="lorem.style" ng-change="clear_result()"/></label>
+			<br /><br />
+			  <button id="gen_button">Generate</button>
+			
+		  </form>
+		  
+		  <p ng-show="lorem.type != '2'" ng-model="lorem.array" ng-repeat="x in lorem.result">{{x.join(' ')}}</p>
+	  <p ng-show="lorem.type == '2'" ng-repeat="x in lorem.result">{{x.toString()}}</p>
+		  
+		  </div>
+	  
+		<div class="col-md-4">
+		</div>
+      </div>
+	  </div>
+      
+   </body>
+</html>
